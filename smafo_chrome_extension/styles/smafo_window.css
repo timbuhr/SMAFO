@@ -1,0 +1,16 @@
+body {
+
+}
+
+div{
+    border-width: medium;
+    border:1px solid; 
+    margin:5px; 
+    padding:8px;
+}
+
+h1{
+	color: #8D1919;
+	text-align: center;
+}
+

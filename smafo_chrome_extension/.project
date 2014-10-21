@@ -5,25 +5,8 @@
 	<projects>
 	</projects>
 	<buildSpec>
-		<buildCommand>
-			<name>com.aptana.ide.core.unifiedBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>com.aptana.projects.webnature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>chrome api/chrome_extensions.js</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/chrome/chrome_extensions.js</locationURI>
-		</link>
-		<link>
-			<name>chrome api/webkit_dom.js</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/chrome/webkit_dom.js</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
