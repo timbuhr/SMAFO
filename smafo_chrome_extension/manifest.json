@@ -7,8 +7,6 @@
 	"background": {
 
 		"persistent": false,
-
-
 		"scripts": ["background.js"]
 	},
 
@@ -22,7 +20,7 @@
 	],
 
 
-	"permissions": ["contextMenus", "tabs"],
+	"permissions": ["contextMenus", "tabs", "<all_urls>"],
 	"icons": {
 		"128": "smafo_logo.png"
 	},

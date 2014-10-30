@@ -23,46 +23,25 @@ chrome.runtime.onInstalled.addListener(function() {
 	});
 });
 
+
 chrome.contextMenus.onClicked.addListener(onClickHandler);
 
-		function onClickHandler(info, tab) {
-		console.log("%s",info.selectionText);
-		
-		//chrome.windows.create();
-	//var sText = info.selectionText;
-	//var url = "https://de.wikipedia.org/wiki/-" + encodeURIComponent(sText);
-
-	//window.open("smafo_window.html","resizable");
+function onClickHandler(info, tab) {
+	console.log(" onclick %s", info.selectionText);
+	var selectedText = info.selectionText;
 	
-	chrome.windows.create({
-		//'id':'SmaFo_window',
-		'url':'smafo_window.html',
-		'type':'app',
-		'width':300,
-		'height':500
-	});
+	// chrome.tabs.query({active: true}, function(tabs){
+    // chrome.tabs.sendMessage(tabs[0].id, {action: "open_dialog_box"}, function(response) {});  
+// });
 
-	// chrome.windows.create("smafo_window.html", {
-	// frame : "none",
-	// id : "framelessWinID",
-	// innerBounds : {
-	// 'width' : 360,
-	// 'height' : 300,
-	// 'left' : 600,
-	// 'minWidth' : 220,
-	// 'minHeight' : 220
-	// },
-	// bounds : {
-	// 'width' : 1200,
-	// 'height' : 500
-// 
-	// }
-	// });
-	// openwindow('smafo_window.html');
+	
+	chrome.tabs.query({
+		active : true,
+		currentWindow : true
+	}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {
+			text : selectedText
+		}, function() {});
+	}); 
+
 };
-
-// function openwindow(url){
-	  // NewWindow=window.open(url,'newWin','width=300,height=500,left=200,top=200,toolbar=No,location=No,scrollbars=no,status=No,resizable=no,fullscreen=No');  
-	  // NewWindow.focus(); 
-	  // void(0);  
-	  // }
