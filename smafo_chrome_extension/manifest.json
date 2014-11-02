@@ -15,7 +15,7 @@
 
 		{
 			"matches": ["http://*/*", "https://*/*"],
-			"js": ["content.js"]
+			"js": ["lib/jquery-2.1.1.js","content.js"]
 		}
 	],
 

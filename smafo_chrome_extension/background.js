@@ -13,6 +13,9 @@
 // });
 // });}
 
+
+
+
 chrome.runtime.onInstalled.addListener(function() {
 	var context = "selection";
 	var title = "smafo";
@@ -33,7 +36,6 @@ function onClickHandler(info, tab) {
 	// chrome.tabs.query({active: true}, function(tabs){
     // chrome.tabs.sendMessage(tabs[0].id, {action: "open_dialog_box"}, function(response) {});  
 // });
-
 	
 	chrome.tabs.query({
 		active : true,
@@ -43,5 +45,4 @@ function onClickHandler(info, tab) {
 			text : selectedText
 		}, function() {});
 	}); 
-
 };
