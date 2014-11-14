@@ -16,24 +16,39 @@ chrome.runtime.onMessage.addListener(
   
 function showSmafoWindow() {
 
-SmafoWindowContainer = document.createElement('div');
-	//SmafoWindowContainer.setAttribute('id','SmafoContainer');
-	SmafoWindowContainer.id = 'SmafoContainer';
-	SmafoWindowContainer.setAttribute('tabIndex','0');
-	//SmafoWindowContainer.setAttribute('style', 'margin:-20px 0 0 -20px; position:absolute;cursor:pointer;');
-	SmafoWindowContainer.setAttribute('style', 'margin:-20px 0 0 -20px; position:absolute;background: blue;width:25px;height:29px;cursor:pointer;');
+	smafoWindowContainer = document.createElement('div');
+	smafoWindowContainer.className = 'smafoContainer';
+	smafoWindowContainer.id = 'SmafoContainer';
 	
-
+	//utilitySpan is just to retrieve the x and y offset for the div
+	var $span= $("<span/>");
+	
 	var range = window.getSelection().getRangeAt(0);
-  	// newRange = document.createRange();
-  	// newRange.setStart(window.getSelection().focusNode, range.endOffset);
-  	// newRange.insertNode(SmafoWindowContainer);
+  	newRange = document.createRange();
+  	newRange.setStart(window.getSelection().focusNode, range.endOffset);
+  	newRange.insertNode($span[0]);
   	
-  	//$("#SmafoContainer").focus();
-  	//$("#SmafoContainer").css("background-color","yellow");
+  	var x = $span.offset().left;
+  	var y = $span.offset().top;
+  	$span.remove();
+  	
+  	$("body").append(smafoWindowContainer);
+  	var divStyle = 'left:'+x+'px;'+'top:'+y+'px;';
+  	$('#SmafoContainer').attr('style',divStyle);
+  	$('#SmafoContainer').attr('tabIndex','0');
+  	$("#SmafoContainer").focus();
+  	
+  	titleArea = document.createElement('div');
+  	titleArea.id = 'titleArea';
+  	$("#titleArea").text('Hello SmaF O:');
+  	text = '<p> Smafo <p/>;';
+  	$("#titleArea").append(text);
+  	
+  	$("#SmafoContainer").append(titleArea);
   	
   	$("#SmafoContainer").focusout(function() {
   		$("#SmafoContainer").remove();
-        console.log("click");
     });
+    
+    
 }
