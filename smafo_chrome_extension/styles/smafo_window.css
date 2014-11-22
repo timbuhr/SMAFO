@@ -1,13 +1,28 @@
 .smafoContainer{
 	margin:-20px 0 0 -20px; 
 	position: absolute;
-	background: blue;
 	width:260px;
 	height:340px;
-	cursor:pointer;
+	padding:5px;
+	background: white;
+  	border:solid 1px;
+  	-webkit-box-shadow: 4px 5px 5px 0 rgba(0,0,0,0.75);
+	-webkit-border-radius: 4px 4px 1px 1px;
+	z-index:999;
 }
 
-#titleArea{
+.closing_div{
+	top:0;
+	left:0;
+	z-index:999;
+	position:absolute;
+	width: 100%;
+	overflow:auto;
+    margin: 0;
+    padding: 0;
+}
+
+.title_area{
 	text-align:center;
 	background: white;
 	position: relative;

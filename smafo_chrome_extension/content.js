@@ -16,6 +16,15 @@ chrome.runtime.onMessage.addListener(
   
 function showSmafoWindow() {
 
+	closingDiv = document.createElement('div');
+	closingDiv.className = 'closing_div';
+	closingDiv.id = 'closing_div';
+	var bodyHeight = $('body').height();
+	console.log("%s",bodyHeight);
+	
+	$('body').append(closingDiv);
+	$('#closing_div').css('height',bodyHeight);
+	
 	smafoWindowContainer = document.createElement('div');
 	smafoWindowContainer.className = 'smafoContainer';
 	smafoWindowContainer.id = 'SmafoContainer';
@@ -35,20 +44,14 @@ function showSmafoWindow() {
   	$("body").append(smafoWindowContainer);
   	var divStyle = 'left:'+x+'px;'+'top:'+y+'px;';
   	$('#SmafoContainer').attr('style',divStyle);
-  	$('#SmafoContainer').attr('tabIndex','0');
-  	$("#SmafoContainer").focus();
   	
   	titleArea = document.createElement('div');
-  	titleArea.id = 'titleArea';
-  	$("#titleArea").text('Hello SmaF O:');
-  	text = '<p> Smafo <p/>;';
-  	$("#titleArea").append(text);
-  	
+  	titleArea.className = 'title_area';
+  	titleArea.id = 'title_area';
   	$("#SmafoContainer").append(titleArea);
-  	
-  	$("#SmafoContainer").focusout(function() {
-  		$("#SmafoContainer").remove();
-    });
     
-    
+    $('#closing_div').click(function(){
+		$("#SmafoContainer").remove();
+		$('#closing_div').remove();
+	});
 }
