@@ -4,11 +4,12 @@
 	width:260px;
 	height:340px;
 	padding:5px;
-	background: rgba(0, 0, 0, 0.4);
+	background: white;
   	border:solid 1px;
   	-webkit-box-shadow: 4px 5px 5px 0 rgba(0,0,0,0.75);
 	-webkit-border-radius: 4px 4px 1px 1px;
 	z-index:999;
+	opacity: 0.5;
 }
 
 .closing_div{
@@ -27,6 +28,10 @@
 	background: white;
 	position: relative;
 	display: block;
-	margin: 2px;
-	z-index:999;
+	padding: 1em;
+	border: 1px solid black;
+	margin: 20px 0 0 20px;
+	width:195px;
+	height:40px;
+	opacity: 1.0;
 }

@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(
   });
   
 function showSmafoWindow(selectedText) {
-
+console.log("%s",selectedText);
 /**************** closing div *********************/
 	closingDiv = document.createElement('div');
 	closingDiv.className = 'closing_div';
@@ -17,7 +17,6 @@ function showSmafoWindow(selectedText) {
 	var bodyHeight = $('body').height();	
 	$('body').append(closingDiv);
 	$('#closing_div').css('height',bodyHeight);
-	
 	
 /***************** main div ***********************/
 	smafoWindowContainer = document.createElement('div');
@@ -39,48 +38,17 @@ function showSmafoWindow(selectedText) {
   	var divStyle = 'left:'+x+'px;'+'top:'+y+'px;';
   	$('#SmafoContainer').attr('style',divStyle);
   	
-  	 $('#closing_div').click(function(){
-		$("#SmafoContainer").remove();
-		$('#closing_div').remove();
-	});
-  	
-  	
-/**************** definition div *******************/
-	var definitionArea = definitionDiv(selectedText);
-  	$("#SmafoContainer").append(definitionArea);
-  	
-  	
-/***************** content div *********************/
-	smafoContentArea = document.createElement('div');
-  	smafoContentArea.className = 'content_area';
-  	smafoContentArea.id = 'content_area';
-  	$("#SmafoContainer").append(smafoContentArea);
-  	
-  	createContentItems(smafoContentArea);
-  	
-/*************** advertisment div ******************/
-	
-    
-}
-
-function definitionDiv (selectedText) {
-	definitionArea = document.createElement('div');
-  	definitionArea.className = 'title_area';
-  	definitionArea.id = 'title_area';
-  	
+/****************** Title div **********************/
+  	titleArea = document.createElement('div');
+  	titleArea.className = 'title_area';
+  	titleArea.id = 'title_area';
+  	$("#SmafoContainer").append(titleArea);
   	title = document.createElement('p');
   	title.textContent = selectedText;
   	$('#title_area').append(title);
-}
-
-function advertismentDiv(){
-	advertismentDiv = document.createElement('div');
-  	advertismentDiv.className = 'advertisment_area';
-  	advertismentDiv.id = 'advertisment_area';
-  	
-  	return advertismentDiv;
-}
-
-function createContentItems(contentDiv){
-	
+    
+    $('#closing_div').click(function(){
+		$("#SmafoContainer").remove();
+		$('#closing_div').remove();
+	});
 }

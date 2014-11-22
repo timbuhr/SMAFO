@@ -18,7 +18,6 @@ function showSmafoWindow(selectedText) {
 	$('body').append(closingDiv);
 	$('#closing_div').css('height',bodyHeight);
 	
-	
 /***************** main div ***********************/
 	smafoWindowContainer = document.createElement('div');
 	smafoWindowContainer.className = 'smafoContainer';
@@ -39,31 +38,20 @@ function showSmafoWindow(selectedText) {
   	var divStyle = 'left:'+x+'px;'+'top:'+y+'px;';
   	$('#SmafoContainer').attr('style',divStyle);
   	
-  	 $('#closing_div').click(function(){
-		$("#SmafoContainer").remove();
-		$('#closing_div').remove();
-	});
-  	
-  	
 /**************** definition div *******************/
-	var definitionArea = definitionDiv(selectedText);
+	var definitionArea = definitionDiv();
   	$("#SmafoContainer").append(definitionArea);
-  	
-  	
-/***************** content div *********************/
-	smafoContentArea = document.createElement('div');
-  	smafoContentArea.className = 'content_area';
-  	smafoContentArea.id = 'content_area';
-  	$("#SmafoContainer").append(smafoContentArea);
-  	
-  	createContentItems(smafoContentArea);
   	
 /*************** advertisment div ******************/
 	
     
+    $('#closing_div').click(function(){
+		$("#SmafoContainer").remove();
+		$('#closing_div').remove();
+	});
 }
 
-function definitionDiv (selectedText) {
+function definitionDiv () {
 	definitionArea = document.createElement('div');
   	definitionArea.className = 'title_area';
   	definitionArea.id = 'title_area';
@@ -79,8 +67,4 @@ function advertismentDiv(){
   	advertismentDiv.id = 'advertisment_area';
   	
   	return advertismentDiv;
-}
-
-function createContentItems(contentDiv){
-	
 }

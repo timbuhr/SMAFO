@@ -27,6 +27,7 @@
 	background: white;
 	position: relative;
 	display: block;
+	border: 1px solid black;
 	margin: 2px;
 	z-index:999;
 }
