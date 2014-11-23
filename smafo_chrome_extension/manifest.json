@@ -15,8 +15,12 @@
 
 		{
 			"matches": ["http://*/*", "https://*/*"],
-			"css": ["styles/smafo_window.css"],
-			"js": ["lib/jquery-2.1.1.js","content.js"]
+			"css": ["styles/smafo_window.css"
+				,"styles/jquery.mCustomScrollbar.min.css"],
+			"js": ["lib/jquery-2.1.1.js"
+				,"lib/jquery.mousewheel.js"
+				,"lib/jquery.mCustomScrollbar.js"
+				,"content.js"]
 		}
 	],
 

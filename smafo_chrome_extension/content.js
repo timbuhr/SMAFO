@@ -13,74 +13,101 @@ function showSmafoWindow(selectedText) {
 /**************** closing div *********************/
 	closingDiv = document.createElement('div');
 	closingDiv.className = 'closing_div';
-	closingDiv.id = 'closing_div';
-	var bodyHeight = $('body').height();	
+	bodyHeight = $('body').height();	
 	$('body').append(closingDiv);
-	$('#closing_div').css('height',bodyHeight);
+	$('.closing_div').css('height',bodyHeight);
 	
 	
 /***************** main div ***********************/
 	smafoWindowContainer = document.createElement('div');
 	smafoWindowContainer.className = 'smafoContainer';
-	smafoWindowContainer.id = 'SmafoContainer';
 	//utilitySpan is just to retrieve the x and y offset for the div
-	var $span= $("<span/>");
+	$span= $("<span/>");
 	
-	var range = window.getSelection().getRangeAt(0);
+	range = window.getSelection().getRangeAt(0);
   	newRange = document.createRange();
   	newRange.setStart(window.getSelection().focusNode, range.endOffset);
   	newRange.insertNode($span[0]);
   	
-  	var x = $span.offset().left;
-  	var y = $span.offset().top;
+  	x = $span.offset().left;
+  	y = $span.offset().top;
   	$span.remove();
   	
   	$("body").append(smafoWindowContainer);
-  	var divStyle = 'left:'+x+'px;'+'top:'+y+'px;';
-  	$('#SmafoContainer').attr('style',divStyle);
+  	divStyle = 'left:'+x+'px;'+'top:'+y+'px;';
+  	$('.smafoContainer').attr('style',divStyle);
   	
-  	 $('#closing_div').click(function(){
-		$("#SmafoContainer").remove();
-		$('#closing_div').remove();
+  	 $('.closing_div').click(function(){
+		$(".smafoContainer").remove();
+		$('.closing_div').remove();
 	});
   	
   	
 /**************** definition div *******************/
-	var definitionArea = definitionDiv(selectedText);
-  	$("#SmafoContainer").append(definitionArea);
+	createDefinitionDiv(selectedText);
+  	
   	
   	
 /***************** content div *********************/
 	smafoContentArea = document.createElement('div');
-  	smafoContentArea.className = 'content_area';
-  	smafoContentArea.id = 'content_area';
-  	$("#SmafoContainer").append(smafoContentArea);
+	smafoContentArea.classList.add('smafoTopDiv');
+  	smafoContentArea.classList.add('content_area');
+  	$(".smafoContainer").append(smafoContentArea);
   	
-  	createContentItems(smafoContentArea);
+  	createContentItems();
   	
 /*************** advertisment div ******************/
 	
-    
+    createAdvertismentDiv();
 }
 
-function definitionDiv (selectedText) {
+function createDefinitionDiv (selectedText) {
 	definitionArea = document.createElement('div');
-  	definitionArea.className = 'title_area';
-  	definitionArea.id = 'title_area';
-  	
+  	definitionArea.classList.add('smafoTopDiv');
+  	definitionArea.classList.add('definition_area');
   	title = document.createElement('p');
-  	title.textContent = selectedText;
-  	$('#title_area').append(title);
+  	title.classList.add('smafoP');
+  	
+  	definitionAreaText = "<span class='defAreaSpan'><b>Definition</b></span>: "+selectedText;
+  	title.innerHTML = definitionAreaText;
+  	
+  	para1 = document.createElement('p');
+  	para1.classList.add('smafoP');
+  	para1.innerHTML = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam';
+  	
+  	para2 = document.createElement('p');
+  	para2.classList.add('smafoP');
+  	para2.innerHTML = 'nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
+  	
+  	$(".smafoContainer").append(definitionArea);
+  	$('.definition_area').append(title);
+  	$('.definition_area').append(para1);
+  	$('.definition_area').append(para2);
+  	
+  	
+  	$('.definition_area').mCustomScrollbar();
 }
 
-function advertismentDiv(){
+function createContentItems(){
+	for (i = 0; i < 5; i++) { 
+    	contentItem = document.createElement('div');
+    	contentItem.classList.add('smafoItem');
+	}
+}
+
+function createAdvertismentDiv(){
 	advertismentDiv = document.createElement('div');
-  	advertismentDiv.className = 'advertisment_area';
+  	advertismentDiv.classList.add('smafoTopDiv');
+  	advertismentDiv.classList.add('advertisment_area');
   	advertismentDiv.id = 'advertisment_area';
   	
-  	return advertismentDiv;
+  	smafoAd = document.createElement('p');
+  	smafoAd.classList.add('smafoP');
+  	
+  	smafoAd.innerHTML = "your ad could be here!";
+  	
+  	$(".smafoContainer").append(advertismentDiv);
+  	$('.advertisment_area').append(smafoAd);
 }
 
-function createContentItems(contentDiv){
-	
-}
+
