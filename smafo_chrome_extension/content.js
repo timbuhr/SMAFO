@@ -46,8 +46,6 @@ function showSmafoWindow(selectedText) {
 /**************** definition div *******************/
 	createDefinitionDiv(selectedText);
   	
-  	
-  	
 /***************** content div *********************/
 	smafoContentArea = document.createElement('div');
 	smafoContentArea.classList.add('smafoTopDiv');
@@ -55,6 +53,9 @@ function showSmafoWindow(selectedText) {
   	$(".smafoContainer").append(smafoContentArea);
   	
   	createContentItems();
+  	$('.content_area').mCustomScrollbar({
+        theme:"dark-thin"
+      });
   	
 /*************** advertisment div ******************/
 	
@@ -85,13 +86,16 @@ function createDefinitionDiv (selectedText) {
   	$('.definition_area').append(para2);
   	
   	
-  	$('.definition_area').mCustomScrollbar();
+  	$('.definition_area').mCustomScrollbar({
+        theme:"dark-thin"
+      });
 }
 
 function createContentItems(){
-	for (i = 0; i < 5; i++) { 
+	for (i = 0; i < 10; i++) { 
     	contentItem = document.createElement('div');
     	contentItem.classList.add('smafoItem');
+    	$('.content_area').append(contentItem);
 	}
 }
 
